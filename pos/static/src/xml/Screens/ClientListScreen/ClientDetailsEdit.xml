@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="ClientDetailsEdit" t-inherit="point_of_sale.ClientDetailsEdit" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('client-details-right')]" position="inside">
+            <div class="client-detail">
+                <span class="label">Member</span>
+                <input class="detail membership-code" name="membership_code" t-on-change="captureChange"
+                       t-att-value="props.partner.membership_code || ''"/>
+            </div>
+
+            <div class="client-detail">
+                <span class='label'>CustomerGroup</span>
+                <select>
+                    <option value=''>None</option>
+                    <t t-foreach='env.pos.partners' t-as='partner'>
+                        <option t-att-value='partner.id'>
+                            <t t-esc='partner.name'/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+
+            <div class="client-detail">
+                <span class='label'># Identif.</span>
+                <select class="detail l10n-latam-identification-type needsclick" name="l10n_latam_identification_type_id"
+                        t-on-change="captureChange">
+                    <option value="">None</option>
+                    <t t-foreach="env.pos.types" t-as="type" t-key="type.id">
+                        <option t-att-value="type.id"
+                                t-att-selected="props.partner.l10n_latam_identification_type_id ? ((type.id === props.partner.l10n_latam_identification_type_id[0]) ? true : undefined) : undefined">
+                            <t t-esc="type.name"/>
+                        </option>
+                    </t>
+
+                </select>
+            </div>
+
+<!--
+            <div class="client-detail">
+                <span class='label'># Identif.</span>
+                <select class="detail l10n-latam-identification-type needsclick" name="l10n_latam_identification_type_id"
+                        t-on-change="captureChange">
+                    <option value="">None</option>
+                    <t t-foreach="env.pos.types" t-as="type" t-key="type.id">
+                        <option t-att-value="type.id"
+                                t-att-selected="props.partner.l10n_latam_identification_type_id ? ((type.id === props.partner.l10n_latam_identification_type_id[0]) ? true : undefined) : undefined">
+                            <t t-esc="type.name"/>
+                        </option>
+                    </t>
+
+                </select>
+            </div>
+
+            <div class="client-detail">
+                <span class='label'># Identif.</span>
+                <select class="detail l10n-latam-identification-type needsclick" name="l10n_latam_identification_type_id"
+                        t-on-change="captureChange">
+                    <option value=''>None</option>
+                    <t t-foreach='env.pos.types' t-as='type'>
+                        <option t-att-value='type.id'>
+                            <t t-esc='type.name'/>
+                        </option>
+                    </t>
+                </select>
+            </div>
+
+
+-->
+
+        </xpath>
+    </t>
+
+</templates>

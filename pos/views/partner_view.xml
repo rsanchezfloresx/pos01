@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="pos_member_partner_inherit">
+        <field name="name">pos.member.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="membership_code"/>
+                <field name="company_type"/>
+            </field>
+        </field>
+    </record>
+</odoo>
