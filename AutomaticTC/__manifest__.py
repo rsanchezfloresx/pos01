@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "POS PERU",
+    'name': "T/C automático SUNAT",
 
     'summary': """
-        POS
+        T/C automático - SUNAT
         PERU""",
-    'sequence': 30,
+
     'description': """
-        POS PERU
+        T/C automático SUNAT
     """,
 
     'author': "TPCG",
@@ -20,20 +20,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base',
-                'point_of_sale',
-                'l10n_pe'],
+    'depends': ['base'],
 
     # always loaded
     'data': [
-            'views/pos_assets_template.xml',
-            'views/partner_view.xml',
+        'data/cron.xml',
     ],
-    'qweb': [
-            'static/src/xml/Screens/ReceiptScreen/OrderReceipt.xml',
-            'static/src/xml/Screens/ClientListScreen/ClientDetailsEdit.xml',
+    # only loaded in demonstration mode
+    'demo': [
     ],
-    'installable': True,
-    'application': True,
-    'auto_install': False,
 }

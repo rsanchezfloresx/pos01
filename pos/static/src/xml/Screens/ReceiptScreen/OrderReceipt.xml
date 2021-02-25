@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+     <t t-name="OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+         <xpath expr="//div[hasclass('pos-receipt-contact')]" position="inside">
+            <t t-if="env.pos.get_client()">
+                <div>Client:<t t-esc="env.pos.get_client().name" /></div>
+            </t>
+            <t t-if="env.pos.get_client()">
+                <div>
+                    <t t-esc="env.pos.get_client().l10n_latam_identification_type_id[1]" />
+                    :
+                    <t t-esc="env.pos.get_client().vat" />
+                </div>
+            </t>
+         </xpath>
+     </t>
+
+<!--
+<div>Nro:<t t-esc="env.pos.get_client().vat" /></div>
+                <span class='label'>Tipo Identif.</span>
+                <select class="detail l10n-latam-identification-type needsclick" name="l10n_latam_identification_type_id"
+                        t-on-change="captureChange">
+                    <option value="">None</option>
+                    <t t-foreach="env.pos.types" t-as="type" t-key="type.id">
+                        <option t-att-value="type.id"
+                                t-att-selected="props.partner.l10n_latam_identification_type_id ? ((type.id === props.partner.l10n_latam_identification_type_id[0]) ? true : undefined) : undefined">
+                            <t t-esc="type.name"/>
+                        </option>
+                    </t>
+                </select>
+
+            <t t-foreach="env.pos.types" t-as="type" t-key="type.id">
+                <div>
+                    <t t-esc="type.name" />
+                </div>
+            </t>
+
+                <t t-foreach="receipt.orderlines" t-as="line" t-key="line.id">
+                    <t t-if="isSimple(line)">
+                        <div>
+                            <t t-esc="line.product_name_wrapped[0]" />
+                            <span t-esc="env.pos.format_currency_no_symbol(line.price_display)" class="price_display pos-receipt-right-align"/>
+                        </div>
+                        <WrappedProductNameLines line="line" />
+                    </t>
+
+
+-->
+
+</templates>

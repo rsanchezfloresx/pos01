@@ -1,4 +1,4 @@
-odoo.define('pos.floors', function (require) {
+odoo.define('pos.models', function (require) {
 
 var models = require('point_of_sale.models');
 

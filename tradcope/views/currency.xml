@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="currency_inherit" model="ir.ui.view">
+        <field name="name">currency.inherit</field>
+        <field name="model">res.currency</field>
+        <field name="inherit_id" ref="base.view_currency_form"/> <!--External ID form -->
+        <field name="arch" type="xml">
+            <field name="active" position="after"> <!--colocar despues de este campo -->
+                <field name="lpe_tasa"/>
+            </field>
+        </field>
+    </record>
+
+
+    <record id="currency_rate_inherit" model="ir.ui.view">
+        <field name="name">currency.rate.inherit</field>
+        <field name="model">res.currency.rate</field>
+        <field name="inherit_id" ref="base.view_currency_rate_tree"/> <!--External ID form -->
+        <field name="arch" type="xml">
+            <field name="name" position="after"> <!--colocar despues de este campo -->
+                <field name="lpe_tasa" invisible='1' attrs="{'readonly':True}"/>
+                <field name="lpe_ratec" digits="[3,3]" attrs="{'readonly':[('lpe_tasa','=',False)]}"/>
+                <field name="lpe_ratev" digits="[3,3]" attrs="{'readonly':[('lpe_tasa','=',False)]}"/>
+            </field>
+            <field name="rate" position="replace"> <!--colocar despues de este campo -->
+                <field name="rate" digits="[12,12]" attrs="{'readonly':[('lpe_tasa','=',True)]}"/>
+            </field>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="lpeloc14.list">
+      <field name="name">lpeloc14 list</field>
+      <field name="model">lpeloc14.lpeloc14</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="lpeloc14.action_window">
+      <field name="name">lpeloc14 window</field>
+      <field name="res_model">lpeloc14.lpeloc14</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="lpeloc14.action_server">
+      <field name="name">lpeloc14 server</field>
+      <field name="model_id" ref="model_lpeloc14_lpeloc14"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="lpeloc14" id="lpeloc14.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="lpeloc14.menu_1" parent="lpeloc14.menu_root"/>
+    <menuitem name="Menu 2" id="lpeloc14.menu_2" parent="lpeloc14.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="lpeloc14.menu_1_list" parent="lpeloc14.menu_1"
+              action="lpeloc14.action_window"/>
+    <menuitem name="Server to list" id="lpeloc14" parent="lpeloc14.menu_2"
+              action="lpeloc14.action_server"/>
+-->
+  </data>
+</odoo>

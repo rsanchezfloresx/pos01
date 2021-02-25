@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="view_picking_form_inherit" model="ir.ui.view">
+            <field name="name">stock.picking.form.inherit</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/> <!--External ID form -->
+            <field name="model">stock.picking</field>
+            <field eval="12" name="priority"/>
+            <field name="arch" type="xml">
+                <data>
+                <xpath expr="//form[1]/sheet[1]/group[1]" position="after">
+                  <group name="lpe_group_huEr7">
+                    <group name="lpe_group_huEr7_left"/>
+                    <group name="lpe_group_huEr7_right">
+                            <field name="lpe_date_rate" attrs="{'required':[(1,'=',1)], 'readonly':['|',('lpe_dobRate', '!=', True),('state', '==', 'done')]}"/>
+                            <field name="lpe_exc_rate" attrs="{'readonly':['|',('lpe_dobRate', '!=', True),('state', '==', 'done')]}" style="margin-right:30px;"/>
+                            <field name="lpe_rate" digits="[3,3]"/>
+                            <field name="lpe_new_rate" digits="[3,3]" attrs="{'invisible': [('lpe_exc_rate','!=', 'manual')]}"/>
+                            <field name="lpe_dobRate" attrs="{'invisible':True}"/>
+                    </group>
+                  </group>
+                </xpath>
+                </data>
+            </field>
+        </record>
+
+
+</odoo>
