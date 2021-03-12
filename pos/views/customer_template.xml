@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="customer" name="customer">
+        <t t-call="website.layout">
+            <div t-if="enable_groups" id="div_customer_groups" class="col-lg-3"/>
+            <div id="main_div" t-attf-class="row #{'col-lg-9' if enable_groups else 'col-lg-12'}">
+                <t t-foreach="customers" t-as="cust">
+                    <div class="col-3" style="width: 250px !important;height: 250px !important;">
+                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                        <a t-att-href="'/customers/details/%s' % slug(cust)" itemprop="url">
+                            <span t-field="cust.image_1920"
+                                  t-options="{'widget': 'image', 'preview_image': 'image_1920'}"
+                                  class="d-flex h100 justify-content-center align-items-center"/>
+                            <div class="text-center" style="font-size: 20px;">
+                                <span t-esc="cust.name"/>
+                            </div>
+                            <div class="text-center" style="font-size: 15px;">
+                                <span t-esc="cust.email"/>
+                            </div>
+
+                        </a>
+
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+
+    <template id="customer_details" name="customers">
+        <t t-call="website.layout">
+            <div class="col-md-4" style="margin: 10px;">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="/customers">Customers</a>
+                    </li>
+                    <li t-if="category" class="breadcrumb-item">
+                        <a t-att-href="keep('/shop/category/%s' % slug(category), category=0)" t-field="category.name"/>
+                    </li>
+                    <li class="breadcrumb-item active">
+                        <span t-field="customer.name"/>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-12 row">
+                <div class="col-8 text-center" style="margin-top: 30px;">
+                    <img style="width: 250px; height: 250px;border-radius: 20px;"
+                         t-att-src="'/web/image/res.partner/%s/image_1920' % customer.id" alt="Image"/>
+                </div>
+                <div class="col-4 pull-left" style="margin-top: 32px;">
+                    <h4 class="mb-1">
+                        <b t-esc="customer.name"/>
+                    </h4>
+                    <br/>
+                    <div class="d-flex align-items-center mb-1">
+                        <div class="fa fa-envelope fa-fw mr-1"></div>
+                        <a t-att-href="'mailto:'+customer.email" t-esc="customer.email"/>
+                    </div>
+                    <div class="d-flex flex-nowrap align-items-center mb-1">
+                        <div class="fa fa-phone fa-fw mr-1"></div>
+                        <span t-esc="customer.phone"/>
+                    </div>
+                    <div class="d-flex flex-nowrap align-items-center mb-1">
+                        <div class="fa fa-phone fa-fw mr-1"></div>
+                        <span t-esc="customer.city"/>
+                    </div>
+
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="customer_search" name="Customer Search Box">
+        <form action="/customers">
+            <t t-call="website.website_search_box">
+                <t t-set="action" t-value="'/customers'"/>
+            </t>
+        </form>
+    </template>
+</odoo>

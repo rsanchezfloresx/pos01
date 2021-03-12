@@ -22,12 +22,20 @@
     # any module necessary for this one to work correctly
     'depends': ['base',
                 'point_of_sale',
-                'l10n_pe'],
+                'l10n_pe',
+                'website_sale'],
 
     # always loaded
     'data': [
+            'data/menu.xml',
+            # 'views/customer_template.xml',
+            # 'views/customer_tpage_template.xml',
+            'views/search.xml',
+            'views/customer_tsearch_template.xml',
+            # 'views/customer_ucategory_template.xml',
             'views/pos_assets_template.xml',
             'views/partner_view.xml',
+            'views/website_sale_templates.xml',
     ],
     'qweb': [
             'static/src/xml/Screens/ReceiptScreen/OrderReceipt.xml',

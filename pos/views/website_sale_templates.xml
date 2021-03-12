@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="address_b2b" inherit_id="website_sale.address" name="Show b2b fields" customize_show="True">
+        <xpath expr="//div[@id='div_phone']" position="after">
+            <!--
+            <div class="w-100"/>
+            <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country">
+                <label class="col-form-label" for="country_id">Country</label>
+                <select id="country_id" name="country_id" t-attf-class="form-control #{error.get('country_id') and 'is-invalid' or ''}" t-att-mode="mode[1]">
+                    <option value="">Country...</option>
+                    <t t-foreach="type_rec" t-as="c">
+                        <option t-att-value="c.id" t-att-selected="c.id == (country and country.id or -1)">
+                            <t t-esc="c.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+            -->
+            <!--
+            <div t-attf-class="form-group #{error.get('l10n_latam_identification_type_id') and 'o_has_error' or ''} col-lg-6 div_type">
+            -->
+            <div class="w-100"/>
+            <div class="form-group">
+                <label class="control-label" for="l10n_latam_identification_type_id">Tipo documento</label>
+                <select id="l10n_latam_identification_type_id" name="l10n_latam_identification_type_id" class="form-control link-style">
+                    <option value="">Vacio</option>
+                    <t t-foreach="type_rec" t-as="c">
+                        <option t-att-value="c.id">
+                            <t t-esc="c.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+
+        <!--
+        <span>
+            <strong>RSF LPE</strong>
+        </span>
+        -->
+        </xpath>
+
+        <xpath expr="//div[@id='wrap']" position="after">
+        <hr/>
+        <span>
+            <strong>HSN/SAC Information:</strong>
+        </span>
+
+        <br/>
+        </xpath>
+    </template>
+
+<!--
+    <template id="product_hsn" inherit_id="website_sale.product" name="product hsn">
+
+        <xpath expr="//a[@id='add_to_cart']" position="after">
+        <hr/>
+        <span>
+        <strong>HSN/SAC Information:</strong>
+        </span>
+
+        <br/>
+
+        <p>Code:
+        <span t-field="product.default_code"/>
+        </p>
+
+        <p>Description:
+        <span t-field="product.description"/>
+        </p>
+
+        <hr/>
+
+        <span>
+        We have happy customers from
+
+        <t t-foreach="customer_countries" t-as="country">
+        <span t-esc="country"/>
+        </t>
+
+        . Join us in this journey *catchy slogan*
+
+        </span>
+
+        </xpath>
+    </template>
+-->
+
+
+<!--
+<div class="client-detail">
+    <span class='label'>Tipo Identif.</span>
+    <select class="detail l10n-latam-identification-type needsclick" name="l10n_latam_identification_type_id"
+            t-on-change="captureChange">
+        <option value="">None</option>
+        <t t-foreach="env.pos.types" t-as="type" t-key="type.id">
+            <option t-att-value="type.id"
+                    t-att-selected="props.partner.l10n_latam_identification_type_id ? ((type.id === props.partner.l10n_latam_identification_type_id[0]) ? true : undefined) : undefined">
+                <t t-esc="type.name"/>
+            </option>
+        </t>
+    </select>
+</div>
+
+
+-->
+</odoo>
